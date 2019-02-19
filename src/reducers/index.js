@@ -1,5 +1,5 @@
 const myState = Object.create(null);
-myState.welcome = false;
+myState.isLoading = false;
 myState.dataForTable = [];
 
 
@@ -12,7 +12,8 @@ function reducer(state = myState, action) {
         case 'setDataForTable':
             console.log('reducer set data for table');
             return Object.assign(Object.create(null), state, {
-               dataForTable: action.data
+                dataForTable: action.data,
+                isLoading: true
             });
 
 

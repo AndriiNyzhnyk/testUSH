@@ -4,18 +4,10 @@ import {setDataForTable} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        state
+        data: state.dataForTable
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setData: (data) => {
-            dispatch(setDataForTable(data));
-        }
-    }
-};
-
-const Table = connect(mapStateToProps, mapDispatchToProps)(ComponentTable);
+const Table = connect(mapStateToProps)(ComponentTable);
 
 export default Table;

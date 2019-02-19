@@ -5,31 +5,31 @@ app.set('port', process.env.PORT || 8000);
 
 const data = [
     {
-        empID: 1,
+        empId: 1,
         empName: 'qwerty',
         empActive: 'yes',
         empDepartment: 'prog'
     },
     {
-        empID: 2,
+        empId: 2,
         empName: 'wot',
         empActive: 'no',
         empDepartment: 'hr'
     },
     {
-        empID: 3,
+        empId: 3,
         empName: 'era',
         empActive: 'no',
         empDepartment: 'hr'
     },
     {
-        empID: 4,
+        empId: 4,
         empName: 'rosa',
         empActive: 'yes',
         empDepartment: 'soc'
     },
     {
-        empID: 5,
+        empId: 5,
         empName: 'kara',
         empActive: 'yes',
         empDepartment: 'ceo'
@@ -42,7 +42,9 @@ app.get('/', (req, res) => {
 
 app.get('/api/getDataForTable', (req, res) => {
     // res.send(JSON.stringify(data));
-    res.json(data);
+    setTimeout( ()=> {
+        res.json(data);
+    }, 1000, res);
 });
 
 app.listen(app.get('port'), () => {

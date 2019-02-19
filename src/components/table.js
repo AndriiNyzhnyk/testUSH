@@ -1,23 +1,34 @@
-import React, { Component } from 'react';
-import Loader from '../loader/loader';
-import axios from 'axios';
+import React from 'react';
 
-class Table extends Component {
-    componentDidMount() {
-        console.log(this.props);
-        axios.get('/api/getDataForTable')
-            .then( (response) => {
-                this.props.setData(response.data);
-            })
-            .catch( (err) => {
-                console.log(err);
-                // this.props.setData(['dfdfd']);
-            });
-    }
+export default (props) => (
+    <table className="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>#</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Handle</th>
+            <th></th>
+        </tr>
+        </thead>
 
-    render() {
-        return <div className="loader"><Loader/></div>
-    }
-}
+        <tbody>
+        {props.data.map( (item) => {
+            return (
+                <tr key={item.empId}>
+                    <td className="underscore">View</td>
+                    <td className="underscore">Edit</td>
+                    <td>{item.empId}</td>
+                    <td>{item.empName}</td>
+                    <td>{item.empActive}</td>
+                    <td>{item.empDepartment}</td>
+                    <td className="underscore">Delete</td>
+                </tr>
+            )
+        })}
 
-export default Table;
+        </tbody>
+    </table>
+);

@@ -1,4 +1,10 @@
-.App {
-  text-align: center;
+.underscore {
+    color: steelblue;
+    text-decoration: underline;
+    padding: 0 15px;
+    text-align: center;
 }
-
+.underscore:hover {
+    cursor: pointer;
+    background-color: darkgray;
+}
