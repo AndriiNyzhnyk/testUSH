@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ComponentTable from '../components/table';
-import {setEditItem} from "../actions";
+import {setEditItem, deleteItem} from "../actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(setEditItem(item));
         },
 
-        delete: (e) => {
-            console.log(e);
+        deleteItem: (index) => {
+            dispatch(deleteItem(index - 1));
         }
     }
 };

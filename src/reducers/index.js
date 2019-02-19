@@ -25,6 +25,22 @@ function reducer(state = myState, action) {
                 curentEditItem: action.item
             });
 
+        case 'DeleteIte':
+            console.log('delete item');
+            let index = action.index;
+
+            if(index >=0 && index < state.dataForTable.length) {
+                let newArr = [...state.dataForTable];
+                newArr.splice(index, 1);
+
+                return Object.assign(Object.create(null), state, {
+                    dataForTable: newArr
+                });
+            } else {
+                return state;
+            }
+
+
         default:
             return state
     }

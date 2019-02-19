@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Table extends Component {
     constructor() {
@@ -21,8 +22,16 @@ class Table extends Component {
     }
 
     delete(e) {
-        console.log(e.target.parentNode);
-        console.log('delete');
+        let id = e.target.parentNode.id.split('_')[1];
+
+        axios.delete(`/api/deleteItem/${id}`, {})
+            .then( () => {
+                console.log('delete ' + id);
+                this.props.deleteItem(id);
+
+            }).catch( (err) => {
+                console.log(err);
+            });
     }
 
 

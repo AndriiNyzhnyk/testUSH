@@ -11,3 +11,10 @@ export const setEditItem = (item) => {
         item
     }
 };
+
+export const deleteItem = (index) => {
+    return {
+        type: 'deleteItem',
+        index
+    }
+};
