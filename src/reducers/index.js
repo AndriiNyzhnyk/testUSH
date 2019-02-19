@@ -1,6 +1,9 @@
+// import {setEditItem} from "../actions";
+
 const myState = Object.create(null);
 myState.isLoading = false;
 myState.dataForTable = [];
+myState.curentEditItem = null;
 
 
 function reducer(state = myState, action) {
@@ -16,7 +19,11 @@ function reducer(state = myState, action) {
                 isLoading: true
             });
 
-
+        case 'setEditItem':
+            console.log('reducer setEditItem');
+            return Object.assign(Object.create(null), state, {
+                curentEditItem: action.item
+            });
 
         default:
             return state

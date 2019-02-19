@@ -4,3 +4,10 @@ export const setDataForTable = (data) => {
         data
     }
 };
+
+export const setEditItem = (item) => {
+    return {
+        type: 'setEditItem',
+        item
+    }
+};

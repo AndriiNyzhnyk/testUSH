@@ -42,9 +42,11 @@ app.get('/', (req, res) => {
 
 app.get('/api/getDataForTable', (req, res) => {
     // res.send(JSON.stringify(data));
-    setTimeout( ()=> {
-        res.json(data);
-    }, 1000, res);
+    // setTimeout( ()=> {
+    //     res.json(data);
+    // }, 1000, res);
+
+    res.json(data);
 });
 
 app.listen(app.get('port'), () => {
