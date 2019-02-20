@@ -2,8 +2,11 @@
 
 const myState = Object.create(null);
 myState.isLoading = false;
-myState.dataForTable = [];
+myState.allDataForTable = [];
+myState.currentDataForTable = [];
+myState.currentPageForTable = 1;
 myState.curentEditItem = null;
+myState.countPagesForPagination = 5;
 
 
 function reducer(state = myState, action) {
@@ -12,17 +15,31 @@ function reducer(state = myState, action) {
 
             return state;
 
-        case 'setDataForTable':
+        case 'setAllDataForTable':
             console.log('reducer set data for table');
             return Object.assign(Object.create(null), state, {
-                dataForTable: action.data,
+                allDataForTable: action.data,
                 isLoading: true
             });
 
         case 'setEditItem':
             console.log('reducer setEditItem');
             return Object.assign(Object.create(null), state, {
-                curentEditItem: action.item
+                currentEditItem: action.item
+            });
+
+
+        case 'setCurrentPageForTable':
+            console.log('reducer setCurrentPageForTable');
+            return Object.assign(Object.create(null), state, {
+                currentPageForTable: action.item
+            });
+
+
+        case 'setCountPagesForPagination':
+            console.log('reducer setCountPagesForPagination');
+            return Object.assign(Object.create(null), state, {
+                countPagesForPagination: action.count
             });
 
         case 'deleteItem':
@@ -30,7 +47,7 @@ function reducer(state = myState, action) {
             let index = +action.index;
             console.log(index + ' index in reducer');
 
-            let newArr = [...state.dataForTable];
+            let newArr = [...state.allDataForTable];
 
             for(let i = 0; i < newArr.length; i++) {
                 if(newArr[i].empId === index) {
@@ -40,7 +57,7 @@ function reducer(state = myState, action) {
             }
 
             return Object.assign(Object.create(null), state, {
-                dataForTable: newArr
+                allDataForTable: newArr
             });
 
 

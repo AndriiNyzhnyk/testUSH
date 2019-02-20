@@ -1,41 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const data = require('./dataForTable').data;
 
 app.set('port', process.env.PORT || 8000);
 app.use(express.static(path.resolve(__dirname, '../build')));
-const data = [
-    {
-        empId: 1,
-        empName: 'qwerty',
-        empActive: 'yes',
-        empDepartment: 'prog'
-    },
-    {
-        empId: 2,
-        empName: 'wot',
-        empActive: 'no',
-        empDepartment: 'hr'
-    },
-    {
-        empId: 3,
-        empName: 'era',
-        empActive: 'no',
-        empDepartment: 'hr'
-    },
-    {
-        empId: 4,
-        empName: 'rosa',
-        empActive: 'yes',
-        empDepartment: 'soc'
-    },
-    {
-        empId: 5,
-        empName: 'kara',
-        empActive: 'yes',
-        empDepartment: 'ceo'
-    }
-];
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../build/index.html'));

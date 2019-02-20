@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import createTable from '../components/createTable';
-import {setDataForTable} from '../actions';
+import {setAllDataForTable} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        data: state.dataForTable,
+        data: state.allDataForTable,
         isLoading: state.isLoading
     };
 };
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setData: (data) => {
-            dispatch(setDataForTable(data));
+            dispatch(setAllDataForTable(data));
         }
     }
 };

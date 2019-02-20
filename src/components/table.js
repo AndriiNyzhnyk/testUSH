@@ -6,6 +6,7 @@ class Table extends Component {
         super(props);
 
         this.edit = this.edit.bind(this);
+        this.props.setCountPagesForPagination(this.props.countPages);
     }
 
     edit(e) {
@@ -16,6 +17,7 @@ class Table extends Component {
         }
     }
 
+        
     render() {
         return(<table className="table">
             <thead>

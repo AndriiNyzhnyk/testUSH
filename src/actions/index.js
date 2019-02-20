@@ -1,6 +1,6 @@
-export const setDataForTable = (data) => {
+export const setAllDataForTable = (data) => {
     return {
-        type: 'setDataForTable',
+        type: 'setAllDataForTable',
         data
     }
 };
@@ -18,3 +18,18 @@ export const deleteItemWithArr = (index) => {
         index
     }
 };
+
+export const setCurentPage = (item) => {
+    return {
+        type: 'setCurrentPageForTable',
+        item
+    }
+};
+
+export const setCountPages = (count) => {
+    return {
+        type: 'setCountPagesForPagination',
+        count
+    }
+};
+
