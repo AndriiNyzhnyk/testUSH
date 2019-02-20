@@ -12,7 +12,7 @@ export const setEditItem = (item) => {
     }
 };
 
-export const deleteItem = (index) => {
+export const deleteItemWithArr = (index) => {
     return {
         type: 'deleteItem',
         index

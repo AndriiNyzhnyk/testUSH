@@ -49,6 +49,13 @@ app.get('/api/getDataForTable', (req, res) => {
     res.json(data);
 });
 
+app.delete('/api/deleteItem/:empId', (req, res) => {
+    let empId = req.params['empId'];
+    console.log(empId);
+    res.send('ok');
+});
+
+
 app.listen(app.get('port'), () => {
     console.log( 'Express запущенний на http://localhost:' +
         app.get('port') + '; нажміть Ctrl+C для завершення.' );

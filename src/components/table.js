@@ -1,39 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Table extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.edit = this.edit.bind(this);
-    }
-
-    view(e) {
-        console.log(e.target.parentNode);
-        console.log('view');
     }
 
     edit(e) {
         let id = e.target.parentNode.id.split('_')[1];
 
         if(id !== this.props.curentEditItem) {
-            this.props.setEditItem(id);
+            this.props.editItem(id);
         }
     }
-
-    delete(e) {
-        let id = e.target.parentNode.id.split('_')[1];
-
-        axios.delete(`/api/deleteItem/${id}`, {})
-            .then( () => {
-                console.log('delete ' + id);
-                this.props.deleteItem(id);
-
-            }).catch( (err) => {
-                console.log(err);
-            });
-    }
-
 
     render() {
         return(<table className="table">
@@ -53,13 +34,13 @@ class Table extends Component {
                 {this.props.data.map( (item) => {
                     return (
                         <tr key={item.empId} id={`item_${item.empId}`} >
-                            <td className="underscore" onClick={this.view}>View</td>
+                            <td className="underscore" onClick={this.props.view}>View</td>
                             <td className="underscore" onClick={this.edit}>Edit</td>
                             <td>{item.empId}</td>
                             <td>{item.empName}</td>
                             <td>{item.empActive}</td>
                             <td>{item.empDepartment}</td>
-                            <td className="underscore" onClick={this.delete}>Delete</td>
+                            <td className="underscore" onClick={this.props.deleteItem}>Delete</td>
                         </tr>
                     )
                 })}

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ComponentTable from '../components/table';
-import {setEditItem, deleteItem} from "../actions";
+import {setEditItem, deleteItemWithArr} from "../actions";
+import axios from 'axios';
 
 const mapStateToProps = (state) => {
     return {
@@ -12,15 +13,26 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         view: (e) => {
-            console.log(e.target.parentNode.refs);
+            console.log(e.target.parentNode);
+            console.log('view');
         },
 
-        setEditItem: (item) => {
-            dispatch(setEditItem(item));
+        editItem: (id) => {
+            dispatch(setEditItem(id));
         },
 
-        deleteItem: (index) => {
-            dispatch(deleteItem(index - 1));
+        deleteItem: (e) => {
+            let index = e.target.parentNode.id.split('_')[1];
+
+            axios.delete(`/api/deleteItem/${index}`, {})
+                .then( () => {
+                    console.log('delete ' + index + ' container');
+                    dispatch(deleteItemWithArr(index));
+
+                }).catch( (err) => {
+                console.log(err);
+            });
+
         }
     }
 };
