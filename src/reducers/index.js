@@ -7,6 +7,12 @@ myState.currentDataForTable = [];
 myState.currentPageForTable = 1;
 myState.curentEditItem = null;
 myState.countPagesForPagination = 5;
+myState.showEditForm = false;
+myState.temp = {
+    empName: '',
+    activity: '',
+    department: ''
+};
 
 
 function reducer(state = myState, action) {
@@ -61,10 +67,41 @@ function reducer(state = myState, action) {
             });
 
 
+
+        case 'changeName':
+            return Object.assign(Object.create(null), state, {
+                temp: Object.assign(Object.create(null), state.temp, {
+                    empName: action.name
+                })
+            });
+
+
+        case 'changeActivity':
+            return Object.assign(Object.create(null), state, {
+                temp: Object.assign(Object.create(null), state.temp, {
+                    activity: action.activity
+                })
+            });
+
+
+        case 'changeDepartment':
+            return Object.assign(Object.create(null), state, {
+                temp: Object.assign(Object.create(null), state.temp, {
+                    department: action.department
+                })
+            });
+
+
         default:
             return state
     }
 }
+
+// myState.temp = {
+//     empName: '',
+//     activity: '',
+//     departament: ''
+// };
 
 
 export default reducer;

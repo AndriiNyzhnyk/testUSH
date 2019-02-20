@@ -12,3 +12,13 @@
 .pagination {
     margin: 10px auto;
 }
+
+.editFormBox {
+    border: 1px solid silver;
+    padding: 10px;
+    width: max-content;
+}
+
+.editFormBox input {
+    margin-left: 10px;
+}

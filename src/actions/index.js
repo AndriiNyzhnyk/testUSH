@@ -33,3 +33,32 @@ export const setCountPages = (count) => {
     }
 };
 
+
+export const changeName = (name) => {
+    return {
+        type: 'changeName',
+        name
+    }
+};
+
+export const changeActivity = (activity) => {
+    return {
+        type: 'changeActivity',
+        activity
+    }
+};
+
+export const changeDepartment = (department) => {
+    return {
+        type: 'changeDepartment',
+        department
+    }
+};
+
+export const saveChangeUserData = () => {
+    return {
+        type: 'changeDepartament'
+    }
+};
+
+
