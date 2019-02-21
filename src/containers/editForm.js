@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 import editForm from '../components/editForm';
-import {changeName, changeActivity, changeDepartment, saveChangeUserData} from '../actions';
+import {
+    changeName,
+    changeActivity,
+    changeDepartment,
+    saveChangeUserData,
+    hideEditForm
+} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,17 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    let counter = 0;
-    
     return {
         handleChangeName: (e) => {
             let value = e.target.value;
 
             dispatch(changeName(value));
-
-            // dispatch();
-            console.log(counter);
-
         },
 
         handleChangeActivity: (e) => {
@@ -36,8 +36,10 @@ const mapDispatchToProps = (dispatch) => {
 
             dispatch(changeDepartment(value));
 
-            counter++;
-            console.log(counter);
+        },
+
+        handleCancelClick: () => {
+            dispatch(hideEditForm());
         },
 
         handleSubmit: (e) => {

@@ -31,7 +31,14 @@ function reducer(state = myState, action) {
         case 'setEditItem':
             console.log('reducer setEditItem');
             return Object.assign(Object.create(null), state, {
-                currentEditItem: action.item
+                currentEditItem: action.item,
+                showEditForm: true
+            });
+
+
+        case 'hideEditForm':
+            return Object.assign(Object.create(null), state, {
+                showEditForm: false
             });
 
 

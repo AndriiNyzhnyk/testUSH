@@ -5,7 +5,8 @@ import {setAllDataForTable} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        isLoading: state.isLoading
+        isLoading: state.isLoading,
+        showEditForm: state.showEditForm
     };
 };
 

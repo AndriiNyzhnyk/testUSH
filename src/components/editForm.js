@@ -23,7 +23,7 @@ class EditForm extends Component {
                                onChange={this.props.handleChangDepartment} />
                     </p>
                     <input type="submit" value="Save" />
-                    <input type="button" value="Cancel" onClick={() => console.log('cancel')}/>
+                    <input type="button" value="Cancel" onClick={this.props.handleCancelClick}/>
                 </form>
             </div>
         );

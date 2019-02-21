@@ -12,6 +12,12 @@ export const setEditItem = (item) => {
     }
 };
 
+export const hideEditForm = () => {
+    return {
+        type: 'hideEditForm',
+    }
+};
+
 export const deleteItemWithArr = (index) => {
     return {
         type: 'deleteItem',

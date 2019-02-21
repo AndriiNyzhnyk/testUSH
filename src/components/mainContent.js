@@ -25,7 +25,7 @@ class MainContent extends Component {
                 <div className="mainContent">
                     <Table/>
                     <Pagination/>
-                    <EditForm/>
+                    {this.props.showEditForm ? <EditForm/> : null}
                 </div>
             );
         } else {
