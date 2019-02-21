@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 
 class Table extends Component {
     constructor(props) {
@@ -10,10 +9,14 @@ class Table extends Component {
     }
 
     edit(e) {
-        let id = e.target.parentNode.id.split('_')[1];
+        let id = +e.target.parentNode.id.split('_')[1];
+
+        let currentItem = this.props.data.filter(  (item) => {
+            return ((item.empId) === id ? true : false);
+        })[0];
 
         if(id !== this.props.curentEditItem) {
-            this.props.editItem(id);
+            this.props.editItem(id, currentItem);
         }
     }
 

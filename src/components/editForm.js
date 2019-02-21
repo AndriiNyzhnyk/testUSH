@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class EditForm extends Component {
+
     render() {
         return (
             <div className="editFormBox">
@@ -14,6 +15,7 @@ class EditForm extends Component {
                     <p>
                         <label>empActive:</label>
                         <input type="checkbox" value={this.props.activity}
+                               checked={(this.props.activity === 'yes') ? true: false}
                                onChange={this.props.handleChangeActivity} />
                     </p>
 

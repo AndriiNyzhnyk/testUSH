@@ -21,6 +21,7 @@ function reducer(state = myState, action) {
 
             return state;
 
+
         case 'setAllDataForTable':
             console.log('reducer set data for table');
             return Object.assign(Object.create(null), state, {
@@ -28,17 +29,28 @@ function reducer(state = myState, action) {
                 isLoading: true
             });
 
+
         case 'setEditItem':
             console.log('reducer setEditItem');
             return Object.assign(Object.create(null), state, {
-                currentEditItem: action.item,
-                showEditForm: true
+                currentEditItem: action.id,
+                showEditForm: true,
+                temp: Object.assign(Object.create(null), state.temp, {
+                    empName: action.item.empName,
+                    activity: action.item.empActive,
+                    department: action.item.empDepartment
+                })
             });
 
 
         case 'hideEditForm':
             return Object.assign(Object.create(null), state, {
-                showEditForm: false
+                showEditForm: false,
+                temp: {
+                    empName: '',
+                    activity: '',
+                    department: ''
+                }
             });
 
 
@@ -54,6 +66,7 @@ function reducer(state = myState, action) {
             return Object.assign(Object.create(null), state, {
                 countPagesForPagination: action.count
             });
+
 
         case 'deleteItem':
             console.log('delete item');
@@ -72,7 +85,6 @@ function reducer(state = myState, action) {
             return Object.assign(Object.create(null), state, {
                 allDataForTable: newArr
             });
-
 
 
         case 'changeName':
@@ -103,12 +115,5 @@ function reducer(state = myState, action) {
             return state
     }
 }
-
-// myState.temp = {
-//     empName: '',
-//     activity: '',
-//     departament: ''
-// };
-
 
 export default reducer;

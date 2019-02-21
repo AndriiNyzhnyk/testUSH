@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
             console.log('view');
         },
 
-        editItem: (id) => {
-            dispatch(setEditItem(id));
+        editItem: (id, item) => {
+            dispatch(setEditItem(id, item));
         },
 
         deleteItem: (e) => {
@@ -48,7 +48,6 @@ const mapDispatchToProps = (dispatch) => {
         setCountPagesForPagination: (count) => {
             dispatch(setCountPages(count));
         }
-
 
     }
 };

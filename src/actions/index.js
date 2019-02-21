@@ -5,9 +5,10 @@ export const setAllDataForTable = (data) => {
     }
 };
 
-export const setEditItem = (item) => {
+export const setEditItem = (id, item) => {
     return {
         type: 'setEditItem',
+        id,
         item
     }
 };
