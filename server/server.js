@@ -13,11 +13,11 @@ app.get('/', (req, res) => {
 
 app.get('/api/getDataForTable', (req, res) => {
     // res.send(JSON.stringify(data));
-    // setTimeout( ()=> {
-    //     res.json(data);
-    // }, 1000, res);
+    setTimeout( ()=> {
+        res.json(data);
+    }, 1000, res);
 
-    res.json(data);
+    // res.json(data);
 });
 
 app.delete('/api/deleteItem/:empId', (req, res) => {
