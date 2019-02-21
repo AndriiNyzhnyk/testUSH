@@ -41,30 +41,30 @@ export const setCountPages = (count) => {
 };
 
 
-export const changeName = (name) => {
+export const changeName = (empName) => {
     return {
         type: 'changeName',
-        name
+        empName
     }
 };
 
-export const changeActivity = (activity) => {
+export const changeActivity = (empActive) => {
     return {
         type: 'changeActivity',
-        activity
+        empActive
     }
 };
 
-export const changeDepartment = (department) => {
+export const changeDepartment = (empDepartment) => {
     return {
         type: 'changeDepartment',
-        department
+        empDepartment
     }
 };
 
 export const saveChangeUserData = () => {
     return {
-        type: 'changeDepartament'
+        type: 'saveChangeUserData'
     }
 };
 

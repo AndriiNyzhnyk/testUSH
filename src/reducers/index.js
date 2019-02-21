@@ -1,5 +1,3 @@
-// import {setEditItem} from "../actions";
-
 const myState = Object.create(null);
 myState.isLoading = false;
 myState.allDataForTable = [];
@@ -9,9 +7,10 @@ myState.curentEditItem = null;
 myState.countPagesForPagination = 5;
 myState.showEditForm = false;
 myState.temp = {
+    empId: '',
     empName: '',
-    activity: '',
-    department: ''
+    empActive: '',
+    empDepartment: ''
 };
 
 
@@ -36,9 +35,10 @@ function reducer(state = myState, action) {
                 currentEditItem: action.id,
                 showEditForm: true,
                 temp: Object.assign(Object.create(null), state.temp, {
+                    empId: action.item.empId,
                     empName: action.item.empName,
-                    activity: action.item.empActive,
-                    department: action.item.empDepartment
+                    empActive: action.item.empActive,
+                    empDepartment: action.item.empDepartment
                 })
             });
 
@@ -47,9 +47,10 @@ function reducer(state = myState, action) {
             return Object.assign(Object.create(null), state, {
                 showEditForm: false,
                 temp: {
+                    empId: '',
                     empName: '',
-                    activity: '',
-                    department: ''
+                    empActive: '',
+                    empDepartment: ''
                 }
             });
 
@@ -90,7 +91,7 @@ function reducer(state = myState, action) {
         case 'changeName':
             return Object.assign(Object.create(null), state, {
                 temp: Object.assign(Object.create(null), state.temp, {
-                    empName: action.name
+                    empName: action.empName
                 })
             });
 
@@ -98,7 +99,7 @@ function reducer(state = myState, action) {
         case 'changeActivity':
             return Object.assign(Object.create(null), state, {
                 temp: Object.assign(Object.create(null), state.temp, {
-                    activity: action.activity
+                    empActive: action.empActive
                 })
             });
 
@@ -106,9 +107,22 @@ function reducer(state = myState, action) {
         case 'changeDepartment':
             return Object.assign(Object.create(null), state, {
                 temp: Object.assign(Object.create(null), state.temp, {
-                    department: action.department
+                    empDepartment: action.empDepartment
                 })
             });
+
+
+        case 'saveChangeUserData':
+            return Object.assign(Object.create(null), state, {
+                allDataForTable: state.allDataForTable.map( (item) => {
+                    if(item.empId === state.temp.empId) {
+                        return state.temp
+                    }
+                    return item;
+                }),
+                showEditForm: false
+            });
+
 
 
         default:

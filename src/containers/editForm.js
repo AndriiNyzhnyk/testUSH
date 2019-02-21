@@ -10,9 +10,10 @@ import {
 
 const mapStateToProps = (state) => {
     return {
+        empId: state.temp.empId,
         empName: state.temp.empName,
-        activity: state.temp.activity,
-        department: state.temp.department
+        empActive: state.temp.empActive,
+        empDepartment: state.temp.empDepartment
     };
 };
 
@@ -25,14 +26,14 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         handleChangeActivity: (e) => {
-            console.log(e.target.checked);
+            // console.log(e.target.checked);
             dispatch(changeActivity(e.target.checked ? 'yes' : 'no'));
         },
 
         handleChangDepartment: (e) => {
 
             let value = e.target.value;
-            console.log(value);
+            // console.log(value);
 
             dispatch(changeDepartment(value));
 
@@ -44,8 +45,8 @@ const mapDispatchToProps = (dispatch) => {
 
         handleSubmit: (e) => {
             e.preventDefault();
-            dispatch(saveChangeUserData());
 
+            dispatch(saveChangeUserData());
         }
     }
 };
