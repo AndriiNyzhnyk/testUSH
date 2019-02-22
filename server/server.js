@@ -31,6 +31,7 @@ app.delete('/api/deleteItem/:empId', (req, res) => {
 });
 
 app.post('/api/signInAdmin', (req, res) => {
+    console.log('req is commind');
 
     let form = new formidable.IncomingForm();
 

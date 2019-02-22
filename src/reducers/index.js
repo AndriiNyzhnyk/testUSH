@@ -9,6 +9,8 @@ myState.showEditForm = false;
 myState.login = '';
 myState.password = '';
 myState.redirectToApp = false;
+myState.windowForSearch = false;
+myState.employeeName = '';
 myState.temp = {
     empId: '',
     empName: '',
@@ -145,9 +147,23 @@ function reducer(state = myState, action) {
             });
 
 
+        case 'showSearchWindow':
+            return Object.assign(Object.create(null), state, {
+                windowForSearch: true
+            });
+
+
+
+        case 'changeEmployeeName':
+            return Object.assign(Object.create(null), state, {
+                employeeName: action.name
+            });
+
         default:
             return state
     }
 }
+
+
 
 export default reducer;

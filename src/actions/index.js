@@ -88,3 +88,19 @@ export const redirectToApp = () => {
 
     }
 };
+
+export const showSearchWindow = () => {
+    return {
+        type: 'showSearchWindow',
+
+    }
+};
+
+
+export const changeEmployeeName = (name) => {
+    return {
+        type: 'changeEmployeeName',
+        name
+
+    }
+};

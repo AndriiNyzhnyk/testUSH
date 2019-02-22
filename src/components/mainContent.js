@@ -3,6 +3,7 @@ import Loader from '../loader/loader';
 import Table from '../containers/table';
 import EditForm from '../containers/editForm';
 import Pagination from '../containers/pagination';
+import Search from '../containers/search';
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 
@@ -28,6 +29,7 @@ class MainContent extends Component {
                         <Table/>
                         <Pagination/>
                         {this.props.showEditForm ? <EditForm/> : null}
+                        <Search/>
                     </div>
                 );
             } else {

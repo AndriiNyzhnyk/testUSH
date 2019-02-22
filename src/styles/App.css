@@ -37,3 +37,15 @@
 .authPage input {
     margin-left: 10px;
 }
+
+.searchBox {
+    width: max-content;
+    border: 1px solid silver;
+    padding: 15px 30px;
+    background-color: #E9EDEF;
+}
+
+.searchBox button {
+    margin-right: 10px;
+    background-color: steelblue;
+}
