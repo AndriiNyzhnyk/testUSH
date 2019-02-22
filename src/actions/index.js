@@ -68,4 +68,23 @@ export const saveChangeUserData = () => {
     }
 };
 
+export const setNewLogin = (value) => {
+    return {
+        type: 'setNewLogin',
+        value
+    }
+};
 
+export const setNewPassword = (value) => {
+    return {
+        type: 'setNewPassword',
+        value
+    }
+};
+
+export const redirectToApp = () => {
+    return {
+        type: 'redirectToApp',
+
+    }
+};

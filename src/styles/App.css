@@ -22,3 +22,18 @@
 .editFormBox input {
     margin-left: 10px;
 }
+
+.mainContent {
+    background-color: white !important;
+}
+
+
+.authPage {
+    width: max-content;
+    margin: 250px auto;
+    text-align: left;
+}
+
+.authPage input {
+    margin-left: 10px;
+}

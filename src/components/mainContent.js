@@ -3,6 +3,7 @@ import Loader from '../loader/loader';
 import Table from '../containers/table';
 import EditForm from '../containers/editForm';
 import Pagination from '../containers/pagination';
+import { Redirect } from 'react-router-dom';
 import axios from "axios";
 
 class MainContent extends Component {
@@ -20,16 +21,21 @@ class MainContent extends Component {
 
 
     render() {
-        if(this.props.isLoading) {
-            return (
-                <div className="mainContent">
-                    <Table/>
-                    <Pagination/>
-                    {this.props.showEditForm ? <EditForm/> : null}
-                </div>
-            );
+        if(this.props.signIn) {
+            if(this.props.isLoading) {
+                return (
+                    <div className="mainContent">
+                        <Table/>
+                        <Pagination/>
+                        {this.props.showEditForm ? <EditForm/> : null}
+                    </div>
+                );
+            } else {
+                return (<Loader/>);
+            }
+
         } else {
-            return (<Loader/>);
+            return <Redirect to="/" />;
         }
     }
 }

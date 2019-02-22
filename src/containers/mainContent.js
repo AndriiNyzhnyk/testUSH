@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import mainContent from '../components/mainContent';
 import {setAllDataForTable} from '../actions';
-
+import '../styles/App.css';
 
 const mapStateToProps = (state) => {
     return {
         isLoading: state.isLoading,
-        showEditForm: state.showEditForm
+        showEditForm: state.showEditForm,
+        signIn: state.redirectToApp
     };
 };
 
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
         setData: (data) => {
             dispatch(setAllDataForTable(data));
         }
+
     }
 };
 

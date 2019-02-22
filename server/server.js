@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const formidable = require('formidable');
+const cookieParser = require('cookie-parser');
 const data = require('./dataForTable').data;
+const security = require('./securityKeys').keys;
 
 app.set('port', process.env.PORT || 8000);
 app.use(express.static(path.resolve(__dirname, '../build')));
+app.use(cookieParser(security.secretCookies));
 
 
 app.get('/', (req, res) => {
@@ -24,6 +28,42 @@ app.delete('/api/deleteItem/:empId', (req, res) => {
     let empId = req.params['empId'];
     console.log(empId);
     res.send('ok');
+});
+
+app.post('/api/signInAdmin', (req, res) => {
+
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, (err, fields, files) => {
+        if(err) return console.error(err);
+
+        console.log(fields);
+
+        if(fields.login === security.login && fields.password === security.password) {
+            res.cookie(security.publicCookieForAuth.name, security.publicCookieForAuth.value,
+                {
+                    signed: false,
+                    path: '/',
+                    // maxAge: 900000
+                    // httpOnly: true
+                });
+
+            res.cookie(security.cookieForRestApi.name, security.cookieForRestApi.value,
+                {
+                    signed: true,
+                    path: '/',
+                    // maxAge: 900000
+                    httpOnly: true
+                });
+            console.log('setCookies');
+            res.send('ok');
+
+        } else {
+            res.status(200).send('badLoginOrPassword');
+        }
+    });
+    
+
 });
 
 

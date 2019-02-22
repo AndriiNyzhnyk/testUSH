@@ -6,6 +6,9 @@ myState.currentPageForTable = 1;
 myState.curentEditItem = null;
 myState.countPagesForPagination = 5;
 myState.showEditForm = false;
+myState.login = '';
+myState.password = '';
+myState.redirectToApp = false;
 myState.temp = {
     empId: '',
     empName: '',
@@ -123,6 +126,23 @@ function reducer(state = myState, action) {
                 showEditForm: false
             });
 
+
+        case 'setNewLogin':
+            return Object.assign(Object.create(null), state, {
+                login: action.value
+            });
+
+
+        case 'setNewPassword':
+            return Object.assign(Object.create(null), state, {
+                password: action.value
+            });
+
+
+        case 'redirectToApp':
+            return Object.assign(Object.create(null), state, {
+                redirectToApp: true
+            });
 
 
         default:
