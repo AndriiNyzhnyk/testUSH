@@ -104,3 +104,21 @@ export const changeEmployeeName = (name) => {
 
     }
 };
+
+export const setCurrentDataForTable = (data) => {
+    return {
+        type: 'setCurrentDataForTable',
+        data
+
+    }
+};
+
+export const stopSearch = () => {
+    return {
+        type: 'stopSearch',
+    }
+};
+
+
+
+

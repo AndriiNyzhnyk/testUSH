@@ -8,9 +8,21 @@ const mapStateToProps = (state) => {
 
     const indexOfLastTodo = state.currentPageForTable * countItemPerPage;
     const indexOfFirstTodo = indexOfLastTodo - countItemPerPage;
-    const currentListForTable = state.allDataForTable.slice(indexOfFirstTodo, indexOfLastTodo);
 
-    const countPages = Math.ceil(state.allDataForTable.length / countItemPerPage);
+
+    let currentListForTable;
+    let countPages;
+
+    if(state.filterIsActive && (state.currentDataForTable.length !== 0)) {
+        currentListForTable = state.currentDataForTable.slice(indexOfFirstTodo, indexOfLastTodo);
+        countPages = Math.ceil(state.currentDataForTable.length / countItemPerPage);
+
+    } else {
+        currentListForTable = state.allDataForTable.slice(indexOfFirstTodo, indexOfLastTodo);
+        countPages = Math.ceil(state.allDataForTable.length / countItemPerPage);
+    }
+
+
 
 
     return {

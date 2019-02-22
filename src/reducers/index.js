@@ -11,6 +11,7 @@ myState.password = '';
 myState.redirectToApp = false;
 myState.windowForSearch = false;
 myState.employeeName = '';
+myState.filterIsActive = false;
 myState.temp = {
     empId: '',
     empName: '',
@@ -159,11 +160,28 @@ function reducer(state = myState, action) {
                 employeeName: action.name
             });
 
+
+
+        case 'setCurrentDataForTable':
+            return Object.assign(Object.create(null), state, {
+                currentDataForTable: action.data,
+                filterIsActive: true
+            });
+
+
+
+        case 'stopSearch':
+            return Object.assign(Object.create(null), state, {
+                currentDataForTable: [],
+                filterIsActive: false,
+                windowForSearch: false,
+                employeeName: ''
+            });
+
+
         default:
             return state
     }
 }
-
-
 
 export default reducer;

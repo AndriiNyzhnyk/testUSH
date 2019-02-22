@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-
     render() {
-
         if(this.props.windowForSearch) {
             return (
                 <div className="searchBox">
-                    <form  onSubmit={this.props.startSearch}>
+                    <form onSubmit={(e) => e.preventDefault()}>
                         <p>
-                            <label htmlFor="login"><b>Employee name</b></label><br/>
+                            <label htmlFor="employeeName"><b>Employee name</b></label><br/>
                             <input type="text"
+                                   id="employeeName"
                                    value={this.props.employeeName}
                                    onChange={this.props.handlerChangeParamSearch}
                                    autoComplete="off" required />
                         </p>
 
                         <p>
-                            <button>Search</button>
-                            <button>Cancel</button>
+                            <button onClick={this.props.startSearch.bind(null, this,'mama')}>Search</button>
+                            <button onClick={this.props.cancel}>Cancel</button>
                         </p>
 
 
