@@ -70,8 +70,6 @@ class AuthPage extends Component {
                         <p className="login-submit">
                             <button type="submit" className="login-button">Ввійти</button>
                         </p>
-
-                        <p className="forgot-password">Забули пароль ?</p>
                     </form>
                 </div>
 
