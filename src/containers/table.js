@@ -53,6 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 
                 }).catch( (err) => {
                 console.log(err);
+                alert('something went wrong');
             });
 
         },

@@ -16,18 +16,52 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/getDataForTable', (req, res) => {
-    // res.send(JSON.stringify(data));
-    setTimeout( ()=> {
-        res.json(data);
-    }, 1000, res);
 
+    // res.send(JSON.stringify(data));
+
+    if(checkCookie(req)) {
+        setTimeout( ()=> {
+            res.json(data);
+            console.log('read data');
+        }, 1000, res);
+
+    } else {
+        res.status(401).send('Unauthorized');
+    }
     // res.json(data);
 });
 
 app.delete('/api/deleteItem/:empId', (req, res) => {
-    let empId = req.params['empId'];
-    console.log(empId);
-    res.send('ok');
+
+    if(checkCookie(req)) {
+        let empId = req.params['empId'];
+        console.log(empId);
+        console.log('delete', empId);
+        res.send('ok');
+
+    } else {
+        res.status(401).send('Unauthorized');
+    }
+});
+
+app.put('/api/update', (req, res) => {
+    if(checkCookie(req)) {
+        console.log('update');
+
+        let form = new formidable.IncomingForm();
+
+        form.parse(req, (err, fields, files) => {
+            if (err) return console.error(err);
+
+            console.log(fields);
+        });
+
+
+        res.send('ok');
+    } else {
+        res.status(401).send('Unauthorized');
+    }
+
 });
 
 app.post('/api/signInAdmin', (req, res) => {
@@ -77,6 +111,12 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('500');
 });
+
+
+function checkCookie(req) {
+    return req.signedCookies.admin === security.cookieForRestApi.value;
+}
+
 
 
 process.on('unhandledRejection', (reason, p) => {

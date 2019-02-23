@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import editForm from '../components/editForm';
+import axios from 'axios';
 import {
     changeName,
     changeActivity,
@@ -10,10 +11,7 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        empId: state.temp.empId,
-        empName: state.temp.empName,
-        empActive: state.temp.empActive,
-        empDepartment: state.temp.empDepartment
+        temp: state.temp
     };
 };
 
@@ -43,10 +41,20 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(hideEditForm());
         },
 
-        handleSubmit: (e) => {
+        handleSubmit: (data, e) => {
             e.preventDefault();
 
-            dispatch(saveChangeUserData());
+            console.log(data);
+            axios.put('/api/update', {
+                data: data
+            }).then( () => {
+                dispatch(saveChangeUserData());
+
+            }).catch( (err) =>{
+                console.log(err);
+            });
+
+
         }
     }
 };
